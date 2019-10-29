@@ -23,8 +23,12 @@ restService.post("/echo", function(req, res) {
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.Documento &&
     req.body.queryResult.parameters.OpcionWs){
-      console.log(req.body.queryResult.parameters.Documento)
+
+     
       if(req.body.queryResult.parameters.OpcionWs="ConsultarCliente"){
+
+        console.log(req.body.queryResult.parameters.Documento)
+
         var resp= consultas.ConsultarCliente(req.body.queryResult.parameters.Documento);
 
         resp.then(JSON.parse, errHandler)
@@ -62,11 +66,71 @@ restService.post("/echo", function(req, res) {
                 });
 
              }
-         }, errHandler);
-
-
-      
+         }, errHandler); 
       }
+
+
+      if(req.body.queryResult.parameters.OpcionWs="InsertarCliente"){
+        
+
+        var ArrayDoc=req.body.queryResult.parameters.Documento;
+        var docString=ArrayDoc.join('');
+        console.log(docString);
+        var resp= consultas.InsertarCliente(req.body.queryResult.parameters.CamapanaId,
+          docString,
+          req.body.queryResult.parameters.PrimerNombre,
+          req.body.queryResult.parameters.SegundoNombre,
+          req.body.queryResult.parameters.PrimerApellido,
+          req.body.queryResult.parameters.SegundoApellido,
+          req.body.queryResult.parameters.Celular,
+          req.body.queryResult.parameters.Correo,
+          req.body.queryResult.parameters.Direccion,
+          req.body.queryResult.parameters.Genero
+           );
+          
+        resp.then(JSON.parse, errHandler)
+        .then(function(result) {
+             var respuestaConsulta = result;
+             console.log(respuestaConsulta);
+             console.log(respuestaConsulta.InsertarClienteResult.Resultado);
+             if(respuestaConsulta.InsertarClienteResult.Resultado){
+               const fullName = respuestaConsulta.InsertarClienteResult.PrimerNombre+" "+
+                                  respuestaConsulta.InsertarClienteResult.SegundoNombre+" "+
+                                    respuestaConsulta.InsertarClienteResult.PrimerApellido+" "+
+                                      respuestaConsulta.InsertarClienteResult.SegundoApellido;
+                                      console.log(fullName);
+                                      console.log("fullName");
+                                      
+              return res.json({ 
+                "followupEventInput": 
+                   {
+                     "name":"ClienteCreado", 
+                     "parameters":{
+                        "fullName": fullName
+                     }
+                   }
+               
+                });
+
+             }else{
+               return res.json({ 
+                "followupEventInput": 
+                   {
+                     "name":"ClienteNoCreado", 
+                     "parameters":{
+                        "msgClienteNoCreado": "No te hemos podido registrar en el sistema"
+                     }
+                   }
+               
+                });
+
+             }
+         }, errHandler); 
+         
+      }
+
+
+
     }else{
       return res.json({ 
         "followupEventInput": 
