@@ -39,7 +39,6 @@ restService.post("/echo", function(req, res) {
                                       respuestaConsulta.ConsultarClienteResult.SegundoApellido;
                                       console.log(fullName);
               return res.json({ 
-             
                 "followupEventInput": 
                    {
                      "name":"clientehallado", 
@@ -49,18 +48,19 @@ restService.post("/echo", function(req, res) {
                    }
                
                 });
+
              }else{
-              return res.json({ 
-                "fulfillmentText": "No existes en nuestro sistema, ¿Deseas Registrarte?",
-                "fulfillmentMessages": [
-                  {
-                    "text": {
-                      "text": ["No existes en nuestro sistema, ¿Deseas Registrarte?"]
-                    }
-                  }
-                ],
-                "source": "<webhookpn1>" 
+               return res.json({ 
+                "followupEventInput": 
+                   {
+                     "name":"clientenohallado", 
+                     "parameters":{
+                        "msgNoExisteCliente": "No existes en nuestro sistema ¿Deseas registrarte rapidamente?"
+                     }
+                   }
+               
                 });
+
              }
          }, errHandler);
 
@@ -68,7 +68,16 @@ restService.post("/echo", function(req, res) {
       
       }
     }else{
-      speech= "Seems like some problem. Speak again."+req.body;
+      return res.json({ 
+        "followupEventInput": 
+           {
+             "name":"welcome", 
+             "parameters":{
+                "msgNoExisteCliente": "Error de parametros en webhook"
+             }
+           }
+       
+        });
     }
 
       
