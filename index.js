@@ -47,6 +47,14 @@ restService.post("/echo", function(req, res) {
                     }
                   }
                 ],
+                "followupEventInput": [
+                   {
+                     "name":"clientehallado", 
+                     "parameters":{
+                        "fullName": fullName
+                     }
+                   }
+                ],
                 "source": "<webhookpn1>" 
                 });
              }else{
@@ -83,3 +91,4 @@ restService.listen(process.env.PORT || 8000, function() {
 var errHandler = function(err) {
   console.log(err);
 }
+
