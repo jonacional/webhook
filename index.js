@@ -25,9 +25,9 @@ restService.post("/echo", function(req, res) {
     req.body.queryResult.parameters.OpcionWs){
 
      
-      if(req.body.queryResult.parameters.OpcionWs="ConsultarCliente"){
+      if(req.body.queryResult.parameters.OpcionWs=="ConsultarCliente"){
 
-        console.log(req.body.queryResult.parameters.Documento)
+        console.log("ConsultarCliente "+req.body.queryResult.parameters.Documento)
 
         var resp= consultas.ConsultarCliente(req.body.queryResult.parameters.Documento);
 
@@ -67,12 +67,9 @@ restService.post("/echo", function(req, res) {
 
              }
          }, errHandler); 
-      }
-
-
-      if(req.body.queryResult.parameters.OpcionWs="InsertarCliente"){
+      }else if(req.body.queryResult.parameters.OpcionWs=="InsertarCliente"){
         
-
+       
         var ArrayDoc=req.body.queryResult.parameters.Documento;
         var docString=ArrayDoc.join('');
         console.log(docString);
