@@ -39,14 +39,7 @@ restService.post("/echo", function(req, res) {
                                       respuestaConsulta.ConsultarClienteResult.SegundoApellido;
                                       console.log(fullName);
               return res.json({ 
-                "fulfillmentText": "Bienvenido "+fullName  ,
-                "fulfillmentMessages": [
-                  {
-                    "text": {
-                      "text": ["Bienvenido "+fullName ]
-                    }
-                  }
-                ],
+             
                 "followupEventInput": [
                    {
                      "name":"clientehallado", 
