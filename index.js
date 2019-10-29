@@ -40,15 +40,14 @@ restService.post("/echo", function(req, res) {
                                       console.log(fullName);
               return res.json({ 
              
-                "followupEventInput": [
+                "followupEventInput": 
                    {
                      "name":"clientehallado", 
                      "parameters":{
                         "fullName": fullName
                      }
                    }
-                ],
-                "source": "<webhookpn1>" 
+               
                 });
              }else{
               return res.json({ 
