@@ -132,7 +132,7 @@ restService.post("/echo", function(req, res) {
         var ArrayDocNew=req.body.queryResult.parameters.NewDocumento;
         var newDocString=ArrayDocNew.join(''); 
 
-        var ArrayDocOld=req.body.queryResult.parameters.oldDocumento;
+        var ArrayDocOld=req.body.queryResult.parameters.Documento;
         var oldDocString=ArrayDocOld.join(''); 
 
         console.log("ComparaDocs -  newDocString:"+newDocString+" / oldDocString:"+oldDocString);
