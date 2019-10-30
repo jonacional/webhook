@@ -27,9 +27,12 @@ restService.post("/echo", function(req, res) {
      
       if(req.body.queryResult.parameters.OpcionWs=="ConsultarCliente"){
 
-        console.log("ConsultarCliente "+req.body.queryResult.parameters.Documento)
+        var ArrayDoc=req.body.queryResult.parameters.Documento;
+        var docString=ArrayDoc.join(''); 
 
-        var resp= consultas.ConsultarCliente(req.body.queryResult.parameters.Documento);
+        console.log("ConsultarCliente "+docString)
+
+        var resp= consultas.ConsultarCliente(docString);
 
         resp.then(JSON.parse, errHandler)
         .then(function(result) {
@@ -124,7 +127,47 @@ restService.post("/echo", function(req, res) {
              }
          }, errHandler); 
          
+      }else   if(req.body.queryResult.parameters.OpcionWs=="ComparaDocs"){
+
+        var ArrayDocNew=req.body.queryResult.parameters.NewDocumento;
+        var newDocString=ArrayDocNew.join(''); 
+
+        var ArrayDocOld=req.body.queryResult.parameters.oldDocumento;
+        var oldDocString=ArrayDocOld.join(''); 
+
+        console.log("ComparaDocs -  newDocString:"+newDocString+" / oldDocString:"+oldDocString);
+
+        if(newDocString==oldDocString){
+          return res.json({ 
+            "followupEventInput": 
+               {
+                 "name":"pedirdatoscliente", 
+                 "parameters":{
+                    "msgPedirDatos": "Ingresa tu primer Nombre."
+                 }
+               }
+           
+            });
+
+        }else{
+          return res.json({ 
+            "followupEventInput": 
+               {
+                 "name":"DocumentoNoCoincide", 
+                 "parameters":{
+                    "msgPedirDatos": "Documento no coincide con el consultado previamente, Ingreselo de nuevo o comience de nuevo escribiendo Menu o dando click en el boton de menu"
+                 }
+               }
+           
+            });
+        }
+
       }
+
+
+
+
+      //Fin del Opciones
 
 
 
