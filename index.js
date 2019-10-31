@@ -155,7 +155,7 @@ restService.post("/echo", function(req, res) {
                {
                  "name":"DocumentoNoCoincide", 
                  "parameters":{
-                    "msgPedirDatos": "Documento no coincide con el consultado previamente, Ingreselo de nuevo o comience de nuevo escribiendo Menu o dando click en el boton de menu"
+                    "msgPedirDatos": "Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
                  }
                }
            
