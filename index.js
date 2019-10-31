@@ -153,7 +153,7 @@ restService.post("/echo", function(req, res) {
           return res.json({ 
             "followupEventInput": 
                {
-                 "name":"DocumentoNoCoincide", 
+                 "name":"DocumentoInvalido", 
                  "parameters":{
                     "msgPedirDatos": "Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
                  }
