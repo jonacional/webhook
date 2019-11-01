@@ -150,6 +150,8 @@ restService.post("/echo", function(req, res) {
             });
 
         }else{
+
+          console.log("else DocumentoInvalido")
           return res.json({ 
             "followupEventInput": 
                {
