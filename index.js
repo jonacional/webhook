@@ -33,7 +33,7 @@ restService.post("/echo", function(req, res) {
         console.log("ConsultarCliente "+docString)
 
         var resp= consultas.ConsultarCliente(docString);
-
+        
         resp.then(JSON.parse, errHandler)
         .then(function(result) {
              var respuestaConsulta = result;
