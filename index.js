@@ -152,7 +152,20 @@ restService.post("/echo", function(req, res) {
         }else{
 
           console.log("else DocumentoInvalido")
-          return res.json({ 
+          return res.json(
+         {   "fulfillmentText":response
+            ,"fulfillmentMessages":[
+                {
+                    "text": {
+                        "text": [
+                         "Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
+                        ]
+                    }
+                }
+            ]
+            ,"source":""
+          }      
+         /*   { 
             "followupEventInput": 
                {
                  "name":"otraprueba", 
@@ -161,7 +174,8 @@ restService.post("/echo", function(req, res) {
                  }
                }
            
-            });
+            }*/
+            );
         }
 
       }
