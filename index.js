@@ -164,6 +164,17 @@ restService.post("/echo", function(req, res) {
                 }
             ]
             ,"source":""
+            ,"outputContexts": [
+              {
+                "name": "projects/jonathan-bot-kpynea/agent/sessions/20467c13-391b-fa9d-6645-d894028329c6/contexts/ClienteNoExiste-followup",
+                "lifespanCount": 1 
+              },
+              {
+                "name": "projects/jonathan-bot-kpynea/agent/sessions/20467c13-391b-fa9d-6645-d894028329c6/contexts/MenuPQR-followup",
+                "lifespanCount": 1 
+              }
+
+            ],
           }      
          /*   { 
             "followupEventInput": 
