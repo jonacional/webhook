@@ -150,10 +150,9 @@ restService.post("/echo", function(req, res) {
             });
 
         }else{
-
-          console.log("else DocumentoInvalido")
-          return res.json(
-         {   "fulfillmentText":"Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
+          
+          return res.json({ 
+            "fulfillmentText":"Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
             ,"fulfillmentMessages":[
                 {
                     "text": {
@@ -162,31 +161,16 @@ restService.post("/echo", function(req, res) {
                         ]
                     }
                 }
-            ]
-            ,"source":""
-            ,"outputContexts": [
-              {
-                "name": "projects/jonathan-bot-kpynea/agent/sessions/20467c13-391b-fa9d-6645-d894028329c6/contexts/ClienteNoExiste-followup",
-                "lifespanCount": 1 
-              },
-              {
-                "name": "projects/jonathan-bot-kpynea/agent/sessions/20467c13-391b-fa9d-6645-d894028329c6/contexts/MenuPQR-followup",
-                "lifespanCount": 1 
-              }
-
             ],
-          }      
-         /*   { 
             "followupEventInput": 
                {
-                 "name":"otraprueba", 
+                 "name":"DocumentoInvalido", 
                  "parameters":{
-                    "msgPedirDoc": "Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
+                    "msgPedirDatos": "Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
                  }
                }
            
-            }*/
-            );
+            });
         }
 
       }
