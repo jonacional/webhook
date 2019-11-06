@@ -153,7 +153,7 @@ restService.post("/echo", function(req, res) {
 
           console.log("else DocumentoInvalido")
           return res.json(
-         {   "fulfillmentText":response
+         {   "fulfillmentText":"Documento no coincide con el consultado previamente, Ingresalo de nuevo o comience de nuevo escribiendo Menú o dando Click en el botón de menú"
             ,"fulfillmentMessages":[
                 {
                     "text": {
