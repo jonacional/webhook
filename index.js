@@ -104,7 +104,7 @@ restService.post("/echo", function(req, res) {
               return res.json({ 
                 "followupEventInput": 
                    {
-                     "name":"ClienteCreado", 
+                     "name":"ClienteFueCreado", 
                      "parameters":{
                         "fullName": fullName
                      }
@@ -116,7 +116,7 @@ restService.post("/echo", function(req, res) {
                return res.json({ 
                 "followupEventInput": 
                    {
-                     "name":"ClienteNoCreado", 
+                     "name":"ClienteNoFueCreado", 
                      "parameters":{
                         "msgClienteNoCreado": "No te hemos podido registrar en el sistema"
                      }
