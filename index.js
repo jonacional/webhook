@@ -104,7 +104,7 @@ restService.post("/echo", function(req, res) {
               return res.json({ 
                 "followupEventInput": 
                    {
-                     "name":"ClienteFueCreado", 
+                     "name":"ClienteFueCreadoExito", 
                      "parameters":{
                         "fullName": fullName
                      }
