@@ -108,6 +108,7 @@ restService.post("/echo", function(req, res) {
                      "parameters":{
                         "NombreCompleto": fullName,
                         "TipoPqr": req.body.queryResult.parameters.TipoPQR,
+                        "Documento": req.body.queryResult.parameters.Documento
                      }
                    }
                
