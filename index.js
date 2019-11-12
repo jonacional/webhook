@@ -106,7 +106,7 @@ restService.post("/echo", function(req, res) {
                    {
                      "name":"ClienteFueCreadoExito", 
                      "parameters":{
-                        "fullName": fullName
+                        "NombreCompleto": fullName
                      }
                    }
                
