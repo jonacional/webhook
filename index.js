@@ -191,7 +191,7 @@ restService.post("/echo", function(req, res) {
                    {
                      "name":"SolicitudCreada", 
                      "parameters":{
-                        "info": respuestaConsulta.InsertarSolicitudResult.Mensaje
+                        "info": respuestaConsulta.InsertarSolicitudResult.Mensaje+", Gracias por usar nuestro servicio de chat."
                      }
                    }
                
@@ -203,7 +203,7 @@ restService.post("/echo", function(req, res) {
                    {
                      "name":"SolicitudCreada", 
                      "parameters":{
-                        "info": respuestaConsulta.InsertarSolicitudResult.Mensaje
+                        "info": respuestaConsulta.InsertarSolicitudResult.Mensaje+", Intentalo de nuevo escribiendo menú o dando click en el boton de menú."
                      }
                    }
                
