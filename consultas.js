@@ -26,6 +26,33 @@ requestWs.post({
  
 }
 
+exports.InsertarSolicitud =   function(documento,Tipo,Motivo,Detalle){
+
+    return new Promise(function(resolve, reject) {
+   
+requestWs.post({
+    "headers": { "content-type": "application/json" },
+    "url": "http://apps.outsourcing.com.co:8109/WsCallBotOS.svc/InsertarSolicitud",
+    "body": JSON.stringify({
+        "ClienteCampanaId": documento,
+        "Tipo": Tipo,
+        "Motivo": Motivo,
+        "Detalle": Detalle
+    })
+}, (error, response, body) => {
+
+
+    if(error) {
+        reject(error);
+    }else{
+       
+        resolve(body);
+    }
+})
+    
+}); 
+ 
+}
 
 
 exports.InsertarCliente =   function(CamapanaId,NroDocumento,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,Celular,Correo,Direccion,Genero){

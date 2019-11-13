@@ -165,6 +165,53 @@ restService.post("/echo", function(req, res) {
             });
         }
 
+      }else if(req.body.queryResult.parameters.OpcionWs=="InsertarSolicitud"){
+        
+       
+        var ArrayDoc=req.body.queryResult.parameters.Documento;
+        var docString=ArrayDoc.join('');
+        console.log(docString);
+        var resp= consultas.InsertarSolicitud( 
+          docString,
+          req.body.queryResult.parameters.Tipo,
+          req.body.queryResult.parameters.Motivo,
+          req.body.queryResult.parameters.Detalle 
+           );
+          
+        resp.then(JSON.parse, errHandler)
+        .then(function(result) {
+             var respuestaConsulta = result;
+             console.log(respuestaConsulta);
+             console.log(respuestaConsulta.InsertarSolicitudResult.Resultado);
+             if(respuestaConsulta.InsertarSolicitudResult.Resultado){
+                
+                                      
+              return res.json({ 
+                "followupEventInput": 
+                   {
+                     "name":"SolicitudCreada", 
+                     "parameters":{
+                        "info": respuestaConsulta.InsertarSolicitudResult.Mensaje
+                     }
+                   }
+               
+                });
+
+             }else{
+               return res.json({ 
+                "followupEventInput": 
+                   {
+                     "name":"SolicitudCreada", 
+                     "parameters":{
+                        "info": respuestaConsulta.InsertarSolicitudResult.Mensaje
+                     }
+                   }
+               
+                });
+
+             }
+         }, errHandler); 
+         
       }
 
 
